@@ -8,6 +8,7 @@ JastipMayla adalah platform web aplikasi jasa titip (*jastip*) modern yang diran
 ```text
 JastipMayla/
 │
+├── index.html              # Homepage
 ├── products.html           # All Products
 ├── product-detail.html     # Product Details
 ├── about.html              # About Us
