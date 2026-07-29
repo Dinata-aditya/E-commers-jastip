@@ -1,0 +1,62 @@
+/* --- Variables --- */
+:root {
+    --primary: #4F46E5;
+    --primary-hover: #4338ca;
+    --bg-main: #f3f4f6;
+    --bg-card: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --danger: #ef4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+.login-body {
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container { width: 100%; max-width: 400px; padding: 20px; }
+
+.login-card {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.login-header { text-align: center; margin-bottom: 30px; }
+.login-header h2 { font-size: 2rem; color: var(--text-main); margin-bottom: 5px; }
+.login-header h2 span { color: var(--primary); }
+.login-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: var(--text-main); }
+.input-icon { position: relative; }
+.input-icon i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.input-icon input {
+    width: 100%; padding: 12px 15px 12px 45px;
+    border: 1px solid var(--border); border-radius: 8px;
+    outline: none; transition: 0.3s;
+}
+.input-icon input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+.btn {
+    display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+    padding: 12px; border: none; border-radius: 8px; cursor: pointer;
+    font-weight: 500; transition: 0.3s; font-size: 1rem;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-full { width: 100%; }
+
+.alert { padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; text-align: center; }
+.alert-danger { background: #fee2e2; color: var(--danger); border: 1px solid #f87171; }
+
+.login-footer { margin-top: 25px; text-align: center; }
+.login-footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.login-footer a:hover { color: var(--primary); }

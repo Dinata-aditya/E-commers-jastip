@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Produk - JastipMayla Admin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin Modular CSS -->
+    <link rel="stylesheet" href="../assets/admin/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/admin/css/table.css">
+    <link rel="stylesheet" href="../assets/admin/css/product.css">
+    <link rel="stylesheet" href="../assets/admin/css/modal.css">
+    <link rel="stylesheet" href="../assets/admin/css/responsive.css">
+</head>
+<body>
+
+    <div id="loading-spinner" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h2><i class="fa-solid fa-bag-shopping"></i> AdminPanel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-title">Menu Utama</li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                <li class="menu-title">Kelola Data</li>
+                <li><a href="products.html" class="active"><i class="fa-solid fa-box"></i> Produk</a></li>
+                <li><a href="categories.html"><i class="fa-solid fa-tags"></i> Kategori</a></li>
+                <li class="menu-title">Pengaturan</li>
+                <li><a href="profile.html"><i class="fa-solid fa-user-gear"></i> Profil Admin</a></li>
+                <li><a href="#" id="btn-logout" class="text-danger"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="toggle-sidebar-btn" class="btn-icon"><i class="fa-solid fa-bars"></i></button>
+                    <h3>Daftar Produk</h3>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-product" placeholder="Cari nama produk...">
+                    </div>
+                    <a href="add-product.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Produk</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Gambar</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                            <!-- Data produk akan dimuat di sini oleh crud-product.js -->
+                            <tr>
+                                <td colspan="6" class="text-center">Memuat data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Konfirmasi Hapus</h3>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus produk ini? Data yang dihapus tidak dapat dikembalikan.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary cancel-delete">Batal</button>
+                <button class="btn btn-danger confirm-delete" id="btn-confirm-delete">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modular JS -->
+    <script src="../assets/admin/js/dashboard.js"></script>
+    <script src="../assets/admin/js/api.js" type="module"></script>
+    <script src="../assets/admin/js/modal.js" type="module"></script>
+    <script src="../assets/admin/js/crud-product.js" type="module"></script>
+</body>
+</html>

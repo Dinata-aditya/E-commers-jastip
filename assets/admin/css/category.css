@@ -1,0 +1,47 @@
+/* --- Category Page Specific Styles --- */
+
+/* Grid layout for the categories page */
+.category-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Category count badge in table */
+.count-badge {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: var(--primary);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* Form reset/cancel button visible when editing */
+.btn-cancel-edit {
+    width: 100%;
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--secondary);
+}
+
+.btn-cancel-edit:hover {
+    background-color: var(--bg-body);
+}
+
+/* Empty state inside table */
+.empty-row td {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--secondary);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+    .category-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - JastipMayla</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="assets/client/css/style.css">
+    <link rel="stylesheet" href="assets/client/css/navbar.css">
+    <link rel="stylesheet" href="assets/client/css/footer.css">
+    <link rel="stylesheet" href="assets/client/css/product-detail.css">
+    <link rel="stylesheet" href="assets/client/css/responsive.css">
+</head>
+<body>
+
+    <div id="loading-spinner" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Jastip<span>Mayla</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="how-to-order.html" class="nav-link">How to Order</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container container">
+        <p><a href="index.html">Home</a> / <a href="products.html">Products</a> / <span id="breadcrumb-product-name">Detail</span></p>
+    </div>
+
+    <!-- Product Detail Section -->
+    <main class="product-detail-section container">
+        <!-- Struktur akan diisi melalui Fetch API (product.js). 
+             Ini adalah layout statis sebagai skeleton/tempatnya. -->
+             
+        <div class="detail-grid">
+            <!-- Left: Image Gallery -->
+            <div class="detail-image-box">
+                <img id="main-product-image" src="" alt="Loading image..." class="main-image">
+            </div>
+
+            <!-- Right: Product Info -->
+            <div class="detail-info-box">
+                <span class="category-badge" id="detail-category">-</span>
+                <h1 id="detail-title" class="product-title">Memuat data produk...</h1>
+                
+                <div class="price-box">
+                    <span id="detail-price" class="current-price">Rp 0</span>
+                </div>
+                
+                <div class="description-box">
+                    <h3>Deskripsi Produk:</h3>
+                    <p id="detail-description">Silakan tunggu, data sedang diambil dari server...</p>
+                </div>
+
+                <div class="order-action-box">
+                    <!-- Tombol ini memicu fungsi di whatsapp.js -->
+                    <button id="btn-order-whatsapp" class="btn btn-whatsapp btn-large">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </button>
+                    <p class="order-note"><i class="fa-solid fa-circle-info"></i> Klik tombol di atas untuk langsung mengirim format order ke Admin kami.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <!-- Sama seperti sebelumnya -->
+    </footer>
+
+    <!-- Modular JS Scripts -->
+    <script src="assets/client/js/api.js" type="module"></script>
+    <script src="assets/client/js/loading.js" type="module"></script>
+    <script src="assets/client/js/navbar.js" type="module"></script>
+    <script src="assets/client/js/whatsapp.js" type="module"></script>
+    <script src="assets/client/js/product.js" type="module"></script>
+    <!-- Script khusus untuk menangkap parameter URL (misal: ?id=1) -->
+    <script src="assets/client/js/app.js" type="module"></script>
+</body>
+</html>

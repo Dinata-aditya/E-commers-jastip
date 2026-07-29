@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JastipMayla - Jasa Titip Terpercaya & Tercepat</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Modular CSS Links -->
+    <link rel="stylesheet" href="assets/client/css/style.css">
+    <link rel="stylesheet" href="assets/client/css/navbar.css">
+    <link rel="stylesheet" href="assets/client/css/footer.css">
+    <link rel="stylesheet" href="assets/client/css/home.css">
+    <link rel="stylesheet" href="assets/client/css/responsive.css">
+</head>
+<body>
+
+    <!-- Loading Overlay Component -->
+    <div id="loading-spinner" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Jastip<span>Mayla</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="how-to-order.html" class="nav-link">How to Order</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://wa.me/" target="_blank" id="whatsapp-float-btn" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Admin
+                </a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Titip Belanja Produk Impian Jadi Lebih Mudah & Aman</h1>
+                    <p>Jasa titip terpercaya dari berbagai store official lokal maupun internasional. Bebas ribet, cepat, dan dijamin sampai tujuan dengan aman.</p>
+                    <div class="hero-buttons">
+                        <a href="products.html" class="btn btn-primary">Lihat Produk <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="how-to-order.html" class="btn btn-outline">Cara Order</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-shield-halved"></i> 100% Terpercaya
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Quick Bar -->
+        <section class="search-filter-section container">
+            <div class="search-box-wrapper">
+                <form id="search-form" class="search-form">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Cari nama produk, brand, atau kategori...">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="featured-products container">
+            <div class="section-header">
+                <h2>Produk Pilihan / Terbaru</h2>
+                <a href="products.html" class="view-all-link">Lihat Semua <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            
+            <!-- Product Grid Container (Populated via api.js & product.js) -->
+            <div id="product-grid" class="product-grid">
+                <!-- Dynamic cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Kenapa Harus Pilih JastipMayla?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-percent"></i></div>
+                        <h3>Fee Terjangkau</h3>
+                        <p>Biaya jasa titip sangat bersahabat dan transparan tanpa ada biaya tersembunyi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-box-open"></i></div>
+                        <h3>Packing Aman</h3>
+                        <p>Setiap barang dikemas dengan teliti menggunakan bubble wrap standar pengiriman aman.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                        <h3>Admin Responsif</h3>
+                        <p>Pelayanan cepat dan ramah siap membantu memandu proses pemesanan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Jastip<span>Mayla</span></h3>
+                <p>Solusi terpercaya belanja produk impian Anda melalui layanan jasa titip profesional dan amanah.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Menu Navigasi</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="how-to-order.html">How to Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Hubungi Kami</h4>
+                <p><i class="fa-solid fa-envelope"></i> support@jastipmayla.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> +62 812-3456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 JastipMayla. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modular JS Scripts (ES6) -->
+    <script src="assets/client/js/api.js" type="module"></script>
+    <script src="assets/client/js/loading.js" type="module"></script>
+    <script src="assets/client/js/navbar.js" type="module"></script>
+    <script src="assets/client/js/search.js" type="module"></script>
+    <script src="assets/client/js/whatsapp.js" type="module"></script>
+    <script src="assets/client/js/product.js" type="module"></script>
+    <script src="assets/client/js/app.js" type="module"></script>
+</body>
+</html>

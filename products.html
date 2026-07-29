@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Produk - JastipMayla</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="assets/client/css/style.css">
+    <link rel="stylesheet" href="assets/client/css/navbar.css">
+    <link rel="stylesheet" href="assets/client/css/footer.css">
+    <link rel="stylesheet" href="assets/client/css/products.css">
+    <link rel="stylesheet" href="assets/client/css/responsive.css">
+</head>
+<body>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header (Sama seperti index.html) -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping"></i> Jastip<span>Mayla</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="how-to-order.html" class="nav-link">How to Order</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://wa.me/" target="_blank" id="whatsapp-float-btn" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Admin
+                </a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Katalog Produk</h1>
+            <p><a href="index.html">Home</a> / Products</p>
+        </div>
+    </div>
+
+    <!-- Main Products Content -->
+    <main class="products-main container">
+        
+        <!-- Sidebar Filter (Dijalankan oleh filter.js) -->
+        <aside class="products-sidebar">
+            <div class="filter-group">
+                <h3>Kategori</h3>
+                <ul id="category-filter-list" class="filter-list">
+                    <!-- Kategori dimuat dinamis oleh JS -->
+                    <li><label><input type="radio" name="category" value="all" checked> Semua</label></li>
+                    <li><label><input type="radio" name="category" value="skincare"> Skincare</label></li>
+                    <li><label><input type="radio" name="category" value="fashion"> Fashion</label></li>
+                    <li><label><input type="radio" name="category" value="snack"> Snack Import</label></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Product List & Search -->
+        <div class="products-content">
+            <!-- Search Bar (Dijalankan oleh search.js) -->
+            <div class="products-toolbar">
+                <form id="product-search-form" class="search-form">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="product-search-input" placeholder="Cari produk spesifik...">
+                </form>
+                <div class="sort-dropdown">
+                    <select id="sort-select">
+                        <option value="newest">Terbaru</option>
+                        <option value="price-low">Harga: Murah ke Mahal</option>
+                        <option value="price-high">Harga: Mahal ke Murah</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid Container (Dijalankan oleh api.js & product.js) -->
+            <div id="all-products-grid" class="product-grid">
+                <!-- Produk dari backend akan dimuat di sini menggunakan Fetch API -->
+            </div>
+
+            <!-- Pagination (Opsional) -->
+            <div class="pagination" id="pagination-container">
+                <!-- Tombol Halaman Dimuat via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <!-- Sama seperti isi footer di index.html -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 JastipMayla. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modular JS Scripts -->
+    <script src="assets/client/js/api.js" type="module"></script>
+    <script src="assets/client/js/loading.js" type="module"></script>
+    <script src="assets/client/js/navbar.js" type="module"></script>
+    <script src="assets/client/js/search.js" type="module"></script>
+    <script src="assets/client/js/filter.js" type="module"></script>
+    <script src="assets/client/js/product.js" type="module"></script>
+    <script src="assets/client/js/app.js" type="module"></script>
+</body>
+</html>

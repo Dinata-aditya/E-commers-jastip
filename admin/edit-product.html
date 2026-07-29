@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Produk - JastipMayla Admin</title>
+    <!-- CSS Links (Sama dengan add-product.html) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/admin/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/admin/css/form.css">
+    <link rel="stylesheet" href="../assets/admin/css/responsive.css">
+</head>
+<body>
+
+    <div id="loading-spinner" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="admin-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <!-- Sidebar Navigation -->
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h3>Edit Data Produk</h3>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="form-card">
+                    <form id="edit-product-form">
+                        <!-- HIDDEN INPUT UNTUK ID PRODUK -->
+                        <input type="hidden" id="edit_product_id" name="product_id">
+                        
+                        <div class="form-grid">
+                            <div class="form-column">
+                                <div class="input-group">
+                                    <label for="product_name">Nama Produk</label>
+                                    <input type="text" id="product_name" name="product_name" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="category_id">Kategori</label>
+                                    <select id="category_id" name="category_id" required></select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="price">Harga (Rp)</label>
+                                    <input type="number" id="price" name="price" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="description">Deskripsi</label>
+                                    <textarea id="description" name="description" rows="5"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-column">
+                                <div class="input-group">
+                                    <label>Foto Produk (Abaikan jika tidak ingin diganti)</label>
+                                    <div class="image-upload-wrapper">
+                                        <input type="file" id="product_image" name="product_image" accept="image/jpeg, image/png, image/webp" class="hidden-input">
+                                        <label for="product_image" class="upload-area" id="upload-area">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                            <p>Pilih gambar baru</p>
+                                        </label>
+                                    </div>
+                                    <div class="image-preview" id="image-preview-container">
+                                        <!-- Gambar lama akan dirender di sini saat halaman dimuat -->
+                                        <img id="preview-img" src="" alt="Preview Lama">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="products.html" class="btn btn-secondary">Batal</a>
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Perbarui Produk</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/admin/js/api.js" type="module"></script>
+    <script src="../assets/admin/js/preview-image.js" type="module"></script>
+    <script src="../assets/admin/js/crud-product.js" type="module"></script>
+</body>
+</html>

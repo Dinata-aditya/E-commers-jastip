@@ -1,0 +1,12 @@
+/* about.css */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
+.mission-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+.mission-vision .card { background: var(--bg-main); padding: 20px; border-radius: 12px; }
+.mission-vision i { font-size: 2rem; color: var(--primary-color); margin-bottom: 15px; }
+.about-image img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-md); }
+
+/* contact.css */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 80px; }
+.info-list li { display: flex; gap: 20px; margin-bottom: 30px; }
+.info-list i { font-size: 2rem; color: var(--primary-color); }
+.info-list h4 { margin-bottom: 5px; color: var(--text-main); }

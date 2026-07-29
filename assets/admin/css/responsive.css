@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+    .form-grid { grid-template-columns: 1fr; } /* Stack form inputs vertically */
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        position: fixed; left: -260px; height: 100vh;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    }
+    .sidebar.active { left: 0; }
+    .close-sidebar.d-mobile { display: block; }
+    
+    .content-body[style] {
+        grid-template-columns: 1fr !important; /* Fix inline grid on category page */
+    }
+    
+    .table-toolbar { flex-direction: column; align-items: stretch; }
+    .search-box { max-width: 100%; }
+}

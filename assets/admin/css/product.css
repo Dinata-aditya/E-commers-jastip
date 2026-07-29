@@ -1,0 +1,51 @@
+/* --- Product Page Specific Styles --- */
+
+/* Category badge inside the table */
+.category-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    background-color: #ede9fe;
+    color: var(--primary);
+}
+
+/* Stock badge */
+.stock-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.stock-badge.in-stock {
+    background-color: #d1fae5;
+    color: var(--success);
+}
+
+.stock-badge.out-of-stock {
+    background-color: #fee2e2;
+    color: var(--danger);
+}
+
+/* Price formatting */
+.product-price {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+    opacity: 0.4;
+}

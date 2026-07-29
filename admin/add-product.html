@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Produk Baru - JastipMayla Admin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin Modular CSS -->
+    <link rel="stylesheet" href="../assets/admin/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/admin/css/form.css">
+    <link rel="stylesheet" href="../assets/admin/css/responsive.css">
+</head>
+<body>
+
+    <div id="loading-spinner" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="admin-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <!-- Sidebar sama seperti products.html -->
+            <div class="sidebar-logo">
+                <h2><i class="fa-solid fa-bag-shopping"></i> AdminPanel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-title">Menu Utama</li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                <li><a href="products.html" class="active"><i class="fa-solid fa-box"></i> Produk</a></li>
+                <li><a href="categories.html"><i class="fa-solid fa-tags"></i> Kategori</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="toggle-sidebar-btn" class="btn-icon"><i class="fa-solid fa-bars"></i></button>
+                    <h3>Tambah Produk Baru</h3>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="form-card">
+                    <form id="add-product-form">
+                        <div class="form-grid">
+                            <div class="form-column">
+                                <div class="input-group">
+                                    <label for="product_name">Nama Produk <span class="required">*</span></label>
+                                    <input type="text" id="product_name" name="product_name" required>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="category_id">Kategori <span class="required">*</span></label>
+                                    <select id="category_id" name="category_id" required>
+                                        <option value="">-- Pilih Kategori --</option>
+                                        <!-- Opsi dimuat dari API -->
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="price">Harga (Rp) <span class="required">*</span></label>
+                                    <input type="number" id="price" name="price" min="0" required>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="description">Deskripsi Produk</label>
+                                    <textarea id="description" name="description" rows="5"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-column">
+                                <div class="input-group">
+                                    <label>Foto Produk <span class="required">*</span></label>
+                                    <div class="image-upload-wrapper">
+                                        <input type="file" id="product_image" name="product_image" accept="image/jpeg, image/png, image/webp" required class="hidden-input">
+                                        <label for="product_image" class="upload-area" id="upload-area">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                            <p>Klik untuk memilih gambar</p>
+                                            <span class="file-info">Format: JPG, PNG, WEBP. Maks 2MB.</span>
+                                        </label>
+                                    </div>
+                                    <div class="image-preview" id="image-preview-container" style="display: none;">
+                                        <img id="preview-img" src="" alt="Preview">
+                                        <button type="button" id="remove-image-btn" class="btn-icon text-danger"><i class="fa-solid fa-trash"></i> Hapus Foto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="products.html" class="btn btn-secondary">Batal</a>
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Simpan Produk</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/admin/js/api.js" type="module"></script>
+    <script src="../assets/admin/js/validation.js" type="module"></script>
+    <script src="../assets/admin/js/preview-image.js" type="module"></script>
+    <script src="../assets/admin/js/crud-product.js" type="module"></script>
+</body>
+</html>

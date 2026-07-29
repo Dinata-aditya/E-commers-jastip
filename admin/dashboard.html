@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - JastipMayla</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin Modular CSS -->
+    <link rel="stylesheet" href="../assets/admin/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/admin/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/admin/css/responsive.css">
+</head>
+<body>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="admin-wrapper">
+        <!-- Sidebar Component -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h2><i class="fa-solid fa-bag-shopping"></i> AdminPanel</h2>
+                <button id="close-sidebar-btn" class="close-sidebar d-mobile"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="menu-title">Menu Utama</li>
+                <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                
+                <li class="menu-title">Kelola Data</li>
+                <li><a href="products.html"><i class="fa-solid fa-box"></i> Produk</a></li>
+                <li><a href="categories.html"><i class="fa-solid fa-tags"></i> Kategori</a></li>
+                
+                <li class="menu-title">Pengaturan</li>
+                <li><a href="profile.html"><i class="fa-solid fa-user-gear"></i> Profil Admin</a></li>
+                <li><a href="#" id="btn-logout" class="text-danger"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="toggle-sidebar-btn" class="btn-icon"><i class="fa-solid fa-bars"></i></button>
+                    <h3>Ringkasan Sistem</h3>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile-badge">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=4F46E5&color=fff" alt="Admin" class="avatar">
+                        <span>Halo, Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-body">
+                <div class="stats-grid">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <p>Total Produk</p>
+                            <h3 id="stat-total-products">...</h3>
+                        </div>
+                        <div class="stat-icon bg-primary-light text-primary">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat Card 2 -->
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <p>Kategori Aktif</p>
+                            <h3 id="stat-total-categories">...</h3>
+                        </div>
+                        <div class="stat-icon bg-success-light text-success">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 3 -->
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <p>Total Kunjungan Web</p>
+                            <h3 id="stat-total-visitors">...</h3>
+                        </div>
+                        <div class="stat-icon bg-warning-light text-warning">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities / Quick Shortcuts -->
+                <div class="dashboard-widgets">
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3><i class="fa-solid fa-bolt"></i> Aksi Cepat</h3>
+                        </div>
+                        <div class="widget-body shortcut-buttons">
+                            <a href="add-product.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Produk Baru</a>
+                            <a href="categories.html" class="btn btn-outline"><i class="fa-solid fa-folder-plus"></i> Kelola Kategori</a>
+                            <a href="../index.html" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-globe"></i> Lihat Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modular JS -->
+    <script src="../assets/admin/js/api.js" type="module"></script>
+    <script src="../assets/admin/js/dashboard.js" type="module"></script>
+</body>
+</html>

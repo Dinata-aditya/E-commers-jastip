@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Kategori - JastipMayla Admin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/admin/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/admin/css/table.css">
+    <link rel="stylesheet" href="../assets/admin/css/category.css">
+    <link rel="stylesheet" href="../assets/admin/css/modal.css">
+    <link rel="stylesheet" href="../assets/admin/css/form.css">
+    <link rel="stylesheet" href="../assets/admin/css/responsive.css">
+</head>
+<body>
+
+    <div class="admin-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h2><i class="fa-solid fa-bag-shopping"></i> AdminPanel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-title">Menu Utama</li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                <li class="menu-title">Kelola Data</li>
+                <li><a href="products.html"><i class="fa-solid fa-box"></i> Produk</a></li>
+                <li><a href="categories.html" class="active"><i class="fa-solid fa-tags"></i> Kategori</a></li>
+                <li class="menu-title">Pengaturan</li>
+                <li><a href="#" id="btn-logout" class="text-danger"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="toggle-sidebar-btn" class="btn-icon"><i class="fa-solid fa-bars"></i></button>
+                    <h3>Daftar Kategori</h3>
+                </div>
+            </header>
+
+            <div class="content-body">
+            <div class="category-layout">
+                <!-- Form Tambah Kategori di sebelah kiri -->
+                <div class="form-card">
+                    <h4>Tambah Kategori Baru</h4>
+                    <form id="add-category-form" style="margin-top: 20px;">
+                        <input type="hidden" id="category_id_input">
+                        <div class="input-group">
+                            <label for="category_name">Nama Kategori</label>
+                            <input type="text" id="category_name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Simpan Kategori</button>
+                    </form>
+                </div>
+
+                <!-- Tabel Kategori di sebelah kanan -->
+                <div class="table-responsive" style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Kategori</th>
+                                <th>Total Produk</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="category-table-body">
+                            <!-- Dimuat oleh JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.category-layout -->
+            </div><!-- /.content-body -->
+        </main>
+    </div>
+
+    <!-- Modal Hapus (Sama seperti di products.html) -->
+    
+    <script src="../assets/admin/js/dashboard.js"></script>
+    <script src="../assets/admin/js/api.js" type="module"></script>
+    <script src="../assets/admin/js/crud-category.js" type="module"></script>
+</body>
+</html>

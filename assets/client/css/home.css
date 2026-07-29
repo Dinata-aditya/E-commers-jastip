@@ -1,0 +1,169 @@
+/* --- Hero Section --- */
+.hero-section {
+    padding: 60px 0;
+    background: linear-gradient(to right bottom, #fff0f0, var(--bg-white));
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    height: 400px;
+    background-color: var(--border-color); /* Placeholder untuk gambar/ilustrasi */
+    border-radius: 20px;
+    background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--bg-white);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    font-weight: 600;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Search & Filter Quick Bar --- */
+.search-filter-section {
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-box-wrapper {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--bg-main);
+    padding: 10px 20px;
+    border-radius: 12px;
+}
+
+.search-form i {
+    color: var(--text-muted);
+}
+
+.search-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* --- Featured Products & Grid --- */
+.featured-products {
+    padding: 80px 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--text-main);
+}
+
+.view-all-link {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* --- Features (Why Choose Us) --- */
+.features-section {
+    background-color: var(--bg-white);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 30px;
+    background: var(--bg-main);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: var(--bg-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 20px;
+}

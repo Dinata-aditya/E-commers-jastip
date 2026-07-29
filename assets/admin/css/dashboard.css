@@ -1,0 +1,23 @@
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+.stat-card {
+    background: var(--bg-white); padding: 25px; border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
+}
+.stat-info p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 5px; }
+.stat-info h3 { font-size: 2rem; color: var(--text-dark); }
+.stat-icon { width: 60px; height: 60px; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; }
+
+/* Utility Colors for Icons */
+.bg-primary-light { background: #e0e7ff; } .text-primary { color: #4F46E5; }
+.bg-success-light { background: #d1fae5; } .text-success { color: #10b981; }
+.bg-warning-light { background: #fef3c7; } .text-warning { color: #f59e0b; }
+
+.widget-card { background: var(--bg-white); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow: hidden; }
+.widget-header { padding: 20px; border-bottom: 1px solid var(--border); background: #f9fafb; }
+.widget-body { padding: 20px; }
+.shortcut-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
