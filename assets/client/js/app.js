@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* ── About Us ─────────────────────────────────────────── */
-    if (path.includes('about.html')) {
+    if (path.includes('about.html') || path.endsWith('/about') || path === '/about') {
         const profile = await getStoreProfile();
         if (!profile) return;
 
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         setAttr('about-email-link', 'href', `mailto:${email}`);
         setEl('about-email-text', email);
     }
-    if (path.includes('product-detail.html')) {
+    if (path.includes('product-detail.html') || path.includes('/product-detail') || path.includes('product-detail')) {
         const productId = Number(new URLSearchParams(window.location.search).get('id'));
         if (!productId) return;
 
