@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app.js — Client-side routing & logika halaman.
  * Semua data diambil dari Supabase via api.js.
  */
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* ── Katalog Produk ───────────────────────────────────── */
-    if (path.includes('products.html')) {
+    if (path.includes('products.html') || path.endsWith('/products') || path === '/products') {
         let activeCategoryId = null;
         let activeKeyword    = '';
         let activeSort       = 'newest';
