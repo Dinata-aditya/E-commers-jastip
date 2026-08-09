@@ -49,3 +49,198 @@
     display: block;
     opacity: 0.4;
 }
+
+/* ── Toggle Terjual ───────────────────────────────────────── */
+.sold-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.sold-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.sold-slider {
+    position: absolute;
+    inset: 0;
+    background: #d1d5db;
+    border-radius: 22px;
+    transition: 0.25s;
+}
+
+.sold-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    bottom: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.25s;
+}
+
+.sold-toggle input:checked + .sold-slider {
+    background: #ef4444;
+}
+
+.sold-toggle input:checked + .sold-slider::before {
+    transform: translateX(18px);
+}
+
+.sold-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    background: #fee2e2;
+    color: #ef4444;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+/* Baris terjual — sedikit redup */
+.row-sold td {
+    opacity: 0.65;
+}
+
+/* ── Card Layout Mobile ───────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Sembunyikan tabel biasa */
+    .table-responsive {
+        display: none;
+    }
+
+    /* Tampilkan product cards */
+    .product-cards-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .product-card-admin {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .product-card-admin.sold-card {
+        opacity: 0.7;
+        border-left: 3px solid #ef4444;
+    }
+
+    .product-card-admin-img {
+        width: 72px;
+        height: 72px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+        background: #f3f4f6;
+    }
+
+    .product-card-admin-img.no-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d1d5db;
+        font-size: 1.5rem;
+    }
+
+    .product-card-admin-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .product-card-admin-info h4 {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product-card-admin-info .cat {
+        font-size: 0.72rem;
+        background: #ede9fe;
+        color: #4f46e5;
+        padding: 2px 8px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 4px;
+    }
+
+    .product-card-admin-info .price {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #4f46e5;
+    }
+
+    .product-card-admin-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .product-card-admin-actions .action-btns {
+        display: flex;
+        gap: 6px;
+    }
+}
+
+/* Desktop: sembunyikan mobile cards */
+@media (min-width: 769px) {
+    .product-cards-mobile {
+        display: none;
+    }
+}
+
+/* ── Sold toggle label wrapper ───────────────────────────── */
+.sold-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.sold-toggle-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.sold-toggle input:checked ~ .sold-toggle-label,
+.sold-toggle-wrap:has(input:checked) .sold-toggle-label {
+    color: #ef4444;
+}
+
+@media (max-width: 768px) {
+    /* Action buttons full text */
+    .product-card-admin-actions {
+        gap: 10px;
+    }
+
+    .product-card-admin-actions .action-btns {
+        gap: 6px;
+    }
+
+    .product-card-admin-actions .btn-sm {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+        white-space: nowrap;
+    }
+}

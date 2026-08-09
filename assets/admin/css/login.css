@@ -36,8 +36,8 @@
 
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: var(--text-main); }
-.input-icon { position: relative; }
-.input-icon i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.input-icon { position: relative; overflow: hidden; border-radius: 8px; }
+.input-icon i:not(.btn-toggle-pass i) { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
 .input-icon input {
     width: 100%; padding: 12px 15px 12px 45px;
     border: 1px solid var(--border); border-radius: 8px;
@@ -60,3 +60,33 @@
 .login-footer { margin-top: 25px; text-align: center; }
 .login-footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
 .login-footer a:hover { color: var(--primary); }
+
+/* --- Toggle password visibility button --- */
+.btn-toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    font-size: 0.85rem;
+}
+
+.btn-toggle-pass:hover {
+    color: var(--primary);
+}
+
+/* Beri ruang kanan input supaya tidak tertutup tombol */
+.input-icon input[type="password"],
+.input-icon input[type="text"] {
+    padding-right: 44px;
+}

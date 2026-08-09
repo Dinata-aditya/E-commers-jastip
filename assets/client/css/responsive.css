@@ -1,38 +1,93 @@
-/* --- Tablet (max 992px) --- */
+/* ============================================================
+   RESPONSIVE.CSS — Client Side
+   Breakpoints:
+     - 1200px : Large desktop cap
+     - 992px  : Tablet landscape
+     - 768px  : Tablet portrait / large mobile
+     - 576px  : Mobile
+     - 400px  : Small mobile
+   ============================================================ */
+
+/* ── Tablet Landscape (≤ 992px) ───────────────────────────── */
 @media screen and (max-width: 992px) {
+
+    /* Hero */
     .hero-container {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
     }
-    
+    .hero-content {
+        max-width: 100%;
+    }
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
-    
     .hero-buttons {
         justify-content: center;
     }
-
     .hero-image {
         width: 100%;
+        height: 300px;
+    }
+    .hero-badge {
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
     }
 
+    /* Features */
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    /* Products page */
+    .products-main {
+        grid-template-columns: 1fr;
+        padding: 24px 0 60px;
+    }
+    .products-sidebar {
+        position: static;
+    }
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .filter-list li {
+        margin-bottom: 0;
+    }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .about-image {
+        order: -1;
+    }
+
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
     }
 }
 
-/* --- Mobile (max 768px) --- */
+/* ── Tablet Portrait / Large Mobile (≤ 768px) ─────────────── */
 @media screen and (max-width: 768px) {
-    /* Navbar Responsive */
+
+    /* ── Navbar ── */
     .hamburger {
         display: block;
     }
-
     .nav-menu {
         position: fixed;
         top: 80px;
@@ -43,47 +98,297 @@
         flex-direction: column;
         align-items: center;
         padding-top: 40px;
-        transition: 0.4s ease-in-out;
+        transition: left 0.35s ease-in-out;
+        z-index: 999;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        overflow-y: auto;
     }
-
     .nav-menu.active {
         left: 0;
     }
-
     .nav-list {
         flex-direction: column;
         text-align: center;
-        gap: 25px;
+        gap: 20px;
+        width: 100%;
+        padding: 0 20px;
     }
-
+    .nav-link {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1.05rem;
+    }
     .nav-actions .btn-whatsapp {
-        display: none; /* Sembunyikan tombol WA di header mobile agar tidak penuh */
+        display: none;
     }
 
-    /* Hero & Content Adjustments */
+    /* ── Hero ── */
+    .hero-section {
+        padding: 40px 0;
+    }
     .hero-content h1 {
         font-size: 2rem;
     }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-image {
+        height: 240px;
+    }
+    .hero-badge {
+        font-size: 0.82rem;
+        padding: 10px 16px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
 
+    /* ── Search Filter Bar ── */
+    .search-filter-section {
+        margin-top: -20px;
+    }
+    .search-box-wrapper {
+        padding: 14px;
+    }
+    /* Search form di homepage hero — boleh column */
+    .search-filter-section .search-form {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+    }
+    .search-filter-section .search-form input {
+        width: 100%;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    /* ── Features ── */
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .feature-card {
+        padding: 20px;
     }
 
+    /* ── Footer ── */
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
     }
-    
-    .search-form {
+    .footer-col h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .footer-col h4 {
+        margin-bottom: 10px;
+    }
+    .site-footer {
+        padding-top: 40px;
+    }
+
+    /* ── Product detail ── */
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 20px;
+    }
+    .detail-image-box {
+        position: static;
+    }
+    .product-title {
+        font-size: 1.4rem;
+    }
+    .current-price {
+        font-size: 1.6rem;
+    }
+    .info-badges {
+        gap: 8px;
+    }
+
+    /* ── Products toolbar ── */
+    .products-toolbar {
         flex-direction: column;
+        align-items: stretch;
     }
-    
-    .search-form input {
+    .sort-dropdown select {
         width: 100%;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border-color);
     }
-    
-    .search-form button {
-        width: 100%;
+
+    /* ── Contact ── */
+    .contact-action .wa-card {
+        padding: 32px 24px;
+    }
+
+    /* ── About ── */
+    .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .about-section {
+        padding: 40px 0;
+    }
+}
+
+/* ── Mobile (≤ 576px) ─────────────────────────────────────── */
+@media screen and (max-width: 576px) {
+
+    /* Container padding */
+    .container {
+        padding: 0 16px;
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+    .hero-image {
+        height: 200px;
+        border-radius: 14px;
+    }
+
+    /* Product grid — 2 kolom di mobile */
+    .product-grid,
+    #all-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 2px;
+    }
+    .product-card-img img {
+        object-fit: cover;
+    }
+    .product-card-name {
+        font-size: 0.8rem;
+    }
+    .product-card-price {
+        font-size: 0.85rem;
+        margin: 5px 0 8px;
+    }
+    .product-card-body {
+        padding: 10px 10px 12px;
+    }
+    .btn-detail {
+        font-size: 0.76rem;
+        padding: 7px 0;
+    }
+
+    /* Featured products section */
+    .featured-products {
+        padding: 50px 0;
+    }
+
+    /* Product detail */
+    .detail-grid {
+        padding: 16px;
+    }
+    .product-title {
+        font-size: 1.25rem;
+    }
+    .current-price {
+        font-size: 1.4rem;
+    }
+    .info-badge {
+        font-size: 0.78rem;
+        padding: 6px 10px;
+    }
+
+    /* Page header */
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-bar p {
+        font-size: 0.8rem;
+    }
+
+    /* Contact card */
+    .contact-action .wa-card {
+        padding: 24px 16px;
+    }
+    .contact-action .wa-card > i.fa-whatsapp {
+        font-size: 3rem;
+    }
+    .contact-action .wa-card h3 {
+        font-size: 1.2rem;
+    }
+    .btn-wa-full {
+        font-size: 0.92rem;
+        padding: 12px;
+    }
+
+    /* Info list contact */
+    .info-list li {
+        gap: 14px;
+    }
+    .info-list li i {
+        font-size: 1.4rem;
+        width: 32px;
+    }
+
+    /* About */
+    .about-grid {
+        gap: 20px;
+    }
+    .mission-vision .card {
+        padding: 16px;
+    }
+}
+
+/* ── Small Mobile (≤ 400px) ───────────────────────────────── */
+@media screen and (max-width: 400px) {
+
+    .hero-content h1 {
+        font-size: 1.45rem;
+    }
+    .logo {
+        font-size: 1.3rem;
+    }
+    .site-header {
+        height: 68px;
+    }
+    .nav-menu {
+        top: 68px;
+        height: calc(100vh - 68px);
+    }
+
+    /* Tetap 2 kolom tapi lebih kecil */
+    .product-grid,
+    #all-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .product-card-body {
+        padding: 8px 8px 10px;
+    }
+
+    .product-card-name {
+        font-size: 0.75rem;
+    }
+
+    .product-card-price {
+        font-size: 0.8rem;
+    }
+
+    .detail-grid {
+        padding: 12px;
+    }
+    .current-price {
+        font-size: 1.25rem;
     }
 }

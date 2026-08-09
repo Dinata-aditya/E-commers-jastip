@@ -1,19 +1,286 @@
-@media screen and (max-width: 992px) {
-    .form-grid { grid-template-columns: 1fr; } /* Stack form inputs vertically */
+/* ============================================================
+   ADMIN RESPONSIVE CSS
+   Breakpoints:
+     - 1200px : Large desktop
+     - 992px  : Tablet landscape
+     - 768px  : Tablet portrait / mobile
+     - 576px  : Mobile
+   ============================================================ */
+
+/* ── Tablet Landscape (≤ 1200px) ─────────────────────────── */
+@media screen and (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dashboard-widgets {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* ── Tablet Landscape (≤ 992px) ─────────────────────────── */
+@media screen and (max-width: 992px) {
+    /* Stack form inputs vertically */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stats grid 2 kolom */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Content body padding */
+    .content-body {
+        padding: 20px;
+    }
+
+    /* Table: allow horizontal scroll */
+    .table-wrapper,
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ── Tablet Portrait / Mobile (≤ 768px) ─────────────────── */
 @media screen and (max-width: 768px) {
+
+    /* Sidebar: slide in dari kiri */
     .sidebar {
-        position: fixed; left: -260px; height: 100vh;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.15);
+        transition: left 0.3s ease;
+        z-index: 1100;
     }
-    .sidebar.active { left: 0; }
-    .close-sidebar.d-mobile { display: block; }
-    
-    .content-body[style] {
-        grid-template-columns: 1fr !important; /* Fix inline grid on category page */
+    .sidebar.active {
+        left: 0;
     }
-    
-    .table-toolbar { flex-direction: column; align-items: stretch; }
-    .search-box { max-width: 100%; }
+
+    /* Tombol close sidebar tampil di mobile */
+    .close-sidebar {
+        display: block !important;
+    }
+
+    /* Topbar */
+    .topbar {
+        padding: 0 16px;
+        height: 60px;
+    }
+
+    /* Content body */
+    .content-body {
+        padding: 16px;
+    }
+
+    /* Stats grid — 1 kolom */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    .stat-info h3 {
+        font-size: 1.6rem;
+    }
+
+    /* Dashboard widgets */
+    .dashboard-widgets {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    /* Table toolbar */
+    .table-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .table-toolbar .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Category page: stack content body */
+    .content-body {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Form card */
+    .form-card {
+        padding: 20px;
+    }
+
+    /* Recent products table: hide less important columns */
+    .recent-products-table th:nth-child(2),
+    .recent-products-table td:nth-child(2) {
+        display: none; /* hide foto column */
+    }
+
+    /* Action buttons in table */
+    .action-btns {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    /* Modal */
+    .modal-box {
+        width: 90%;
+        max-width: 360px;
+        padding: 24px 20px;
+    }
+
+    /* Shortcut buttons */
+    .shortcut-buttons {
+        flex-direction: column;
+    }
+    .shortcut-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ── Mobile (≤ 576px) ───────────────────────────────────── */
+@media screen and (max-width: 576px) {
+
+    /* Admin wrapper: no sidebar takeover */
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    /* Topbar title */
+    .topbar .page-title {
+        font-size: 1rem;
+    }
+
+    /* Hide profile badge text, show only avatar */
+    .admin-profile-badge span {
+        display: none;
+    }
+
+    /* Stat card compact */
+    .stat-card {
+        padding: 14px 16px;
+    }
+    .stat-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.4rem;
+    }
+    .stat-info h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Table font size */
+    .data-table {
+        font-size: 0.82rem;
+    }
+    .data-table th,
+    .data-table td {
+        padding: 10px 10px;
+    }
+
+    /* Form */
+    .form-card {
+        padding: 16px;
+    }
+
+    /* Btn sm compact */
+    .btn-sm {
+        padding: 6px 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Login page (jaga-jaga) */
+    .login-container {
+        padding: 16px;
+    }
+    .login-card {
+        padding: 28px 20px;
+    }
+}
+
+/* ── Admin Bottom Navigation ─────────────────────────────── */
+
+/* Default: hidden di desktop */
+.admin-bottom-nav {
+    display: none;
+}
+
+/* Tampil di mobile */
+@media screen and (max-width: 768px) {
+
+    /* Sembunyikan toggle sidebar button di mobile — diganti bottom nav */
+    /* Tapi tampilkan kembali jika ingin pakai toggle manual */
+    #toggle-sidebar-btn {
+        display: none;
+    }
+
+    /* Padding bawah agar konten tidak tertutup bottom nav */
+    body {
+        padding-bottom: 64px;
+    }
+
+    .admin-bottom-nav {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #111827;
+        border-top: 1px solid #1f2937;
+        box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+        z-index: 999;
+        align-items: stretch;
+    }
+
+    .admin-bottom-nav a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: #6b7280;
+        font-size: 0.58rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s;
+        padding: 6px 4px;
+        border-top: 2px solid transparent;
+    }
+
+    .admin-bottom-nav a i {
+        font-size: 1.15rem;
+        line-height: 1;
+    }
+
+    .admin-bottom-nav a.active,
+    .admin-bottom-nav a:hover {
+        color: #a5b4fc;
+        border-top-color: #4F46E5;
+    }
+
+    .admin-bottom-nav a.danger {
+        color: #fca5a5;
+    }
+
+    .admin-bottom-nav a.danger:hover {
+        color: #f87171;
+        border-top-color: #ef4444;
+    }
 }

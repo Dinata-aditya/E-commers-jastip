@@ -57,3 +57,49 @@
     color: #adb5bd;
     font-size: 0.9rem;
 }
+
+/* ── Responsive Footer ───────────────────────────────────── */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .site-footer {
+        padding-top: 40px;
+    }
+    .footer-col h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-grid {
+        gap: 20px;
+    }
+    .footer-col p,
+    .footer-col ul li a {
+        font-size: 0.85rem;
+    }
+    .footer-bottom {
+        font-size: 0.78rem;
+    }
+}
+
+/* ── Logo di footer ──────────────────────────────────────── */
+.footer-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 6px;
+    /* Warna oranye */
+    filter: brightness(0) saturate(100%) invert(49%) sepia(78%) saturate(800%) hue-rotate(316deg) brightness(103%);
+}

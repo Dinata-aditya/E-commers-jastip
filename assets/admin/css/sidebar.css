@@ -1,4 +1,7 @@
-/* --- Global Admin Variables --- */
+/* ============================================================
+   ADMIN SIDEBAR & LAYOUT
+   ============================================================ */
+
 :root {
     --primary: #4F46E5;
     --secondary: #6b7280;
@@ -17,52 +20,324 @@
 body { background-color: var(--bg-body); color: var(--text-dark); overflow-x: hidden; }
 a { text-decoration: none; }
 
-/* Layout Wrapper */
+/* ── Layout ───────────────────────────────────────────────── */
 .admin-wrapper { display: flex; height: 100vh; }
 
-/* Sidebar */
+/* ── Sidebar ──────────────────────────────────────────────── */
 .sidebar {
     width: 260px;
     background-color: var(--bg-sidebar);
     color: white;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
-    z-index: 1000;
+    flex-shrink: 0;
+    transition: left 0.3s ease;
+    z-index: 1100;
 }
-.sidebar-logo { padding: 20px; border-bottom: 1px solid #374151; display: flex; justify-content: space-between; align-items: center; }
-.sidebar-logo h2 { font-size: 1.5rem; color: white; display: flex; gap: 10px; align-items: center; }
-.close-sidebar { display: none; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
 
-.sidebar-menu { list-style: none; padding: 20px 0; overflow-y: auto; }
-.menu-title { padding: 10px 20px; font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); letter-spacing: 1px; margin-top: 10px; }
+.sidebar-logo {
+    padding: 20px;
+    border-bottom: 1px solid #374151;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+
+.sidebar-logo h2 {
+    font-size: 1.3rem;
+    color: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sidebar-logo h2 i { color: #818cf8; }
+
+.close-sidebar {
+    display: none;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: color 0.2s;
+}
+
+.close-sidebar:hover { color: white; }
+
+/* Sidebar menu */
+.sidebar-menu { list-style: none; padding: 16px 0; overflow-y: auto; flex: 1; }
+
+.menu-title {
+    padding: 8px 20px 4px;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    color: #4b5563;
+    letter-spacing: 1.2px;
+    margin-top: 8px;
+}
+
 .sidebar-menu li a {
-    display: flex; align-items: center; gap: 15px;
-    padding: 12px 20px; color: #d1d5db; transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px;
+    color: #9ca3af;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    margin: 1px 0;
 }
-.sidebar-menu li a i { font-size: 1.1rem; width: 20px; text-align: center; }
-.sidebar-menu li a:hover, .sidebar-menu li a.active { background-color: rgba(255, 255, 255, 0.1); color: white; border-left: 4px solid var(--primary); }
+
+.sidebar-menu li a i {
+    font-size: 1rem;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar-menu li a:hover {
+    background-color: rgba(255,255,255,0.07);
+    color: #e5e7eb;
+    border-left-color: #4b5563;
+}
+
+.sidebar-menu li a.active {
+    background-color: rgba(79, 70, 229, 0.15);
+    color: #a5b4fc;
+    border-left-color: var(--primary);
+}
+
 .text-danger { color: #fca5a5 !important; }
+.text-danger:hover { color: #f87171 !important; background-color: rgba(239,68,68,0.1) !important; }
 
-/* Main Content & Topbar */
-.main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
-.topbar {
-    background: var(--bg-white); height: 70px; padding: 0 30px;
-    display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 99;
+/* Overlay backdrop (mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1050;
+    backdrop-filter: blur(2px);
 }
-.topbar-left { display: flex; align-items: center; gap: 20px; }
-.btn-icon { background: transparent; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-dark); transition: 0.2s; }
-.btn-icon:hover { color: var(--primary); }
-.admin-profile-badge { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-.avatar { width: 40px; height: 40px; border-radius: 50%; }
 
-.content-body { padding: 30px; flex: 1; }
+.sidebar-overlay.active { display: block; }
 
-/* Button Styles Admin */
-.btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-.btn-primary { background: var(--primary); color: white; }
-.btn-secondary { background: var(--secondary); color: white; }
-.btn-danger { background: var(--danger); color: white; }
-.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
-.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+/* ── Main Content ─────────────────────────────────────────── */
+.main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; min-width: 0; }
+
+/* ── Topbar ───────────────────────────────────────────────── */
+.topbar {
+    background: var(--bg-white);
+    height: 70px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    gap: 16px;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.topbar-left h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.topbar-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+/* Toggle sidebar button — hanya muncul di mobile lewat responsive.css */
+.btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: 0.2s;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover { background: #f3f4f6; color: var(--primary); }
+
+/* Sembunyikan tombol toggle sidebar di desktop */
+#toggle-sidebar-btn {
+    display: none;
+}
+
+/* ── Profile Dropdown ─────────────────────────────────────── */
+.profile-dropdown-wrapper {
+    position: relative;
+}
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: background 0.2s;
+    border: none;
+    background: none;
+}
+
+.profile-trigger:hover { background: #f3f4f6; }
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.profile-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-role {
+    font-size: 0.7rem;
+    color: var(--text-light);
+}
+
+.profile-chevron {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    transition: transform 0.2s;
+}
+
+.profile-trigger.open .profile-chevron {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    min-width: 220px;
+    z-index: 200;
+    overflow: hidden;
+    display: none;
+}
+
+.profile-dropdown.open { display: block; }
+
+.dropdown-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #f9fafb;
+}
+
+.dropdown-header .d-email {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    word-break: break-all;
+}
+
+.dropdown-header .d-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    transition: background 0.15s;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+}
+
+.dropdown-item i { width: 16px; color: var(--text-light); }
+.dropdown-item:hover { background: #f3f4f6; }
+.dropdown-item.danger { color: var(--danger); }
+.dropdown-item.danger i { color: var(--danger); }
+.dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+/* ── Content body ─────────────────────────────────────────── */
+.content-body { padding: 24px; flex: 1; }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+.btn-primary  { background: var(--primary); color: white; }
+.btn-secondary{ background: var(--secondary); color: white; }
+.btn-danger   { background: var(--danger); color: white; }
+.btn-success  { background: var(--success); color: white; }
+.btn-outline  { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+.btn-sm       { padding: 6px 12px; font-size: 0.8rem; }
+.btn:hover    { opacity: 0.88; transform: translateY(-1px); }
+
+/* Loading spinner */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.spinner {
+    width: 40px; height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Logo img di sidebar dan login — warna oranye */
+.sidebar-logo img,
+.login-card img[alt*="logo"],
+.login-card img[alt*="Mayza"] {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(78%) saturate(800%) hue-rotate(316deg) brightness(103%);
+}

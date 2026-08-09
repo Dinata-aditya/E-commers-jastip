@@ -1,31 +1,375 @@
-.form-card { background: var(--bg-white); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-.form-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+/* ============================================================
+   FORM.CSS — Admin Product Form
+   ============================================================ */
 
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-weight: 500; margin-bottom: 8px; font-size: 0.95rem; }
+.form-card {
+    background: var(--bg-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
 .required { color: var(--danger); }
 
-.input-group input[type="text"], 
-.input-group input[type="number"], 
-.input-group select, 
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group select,
 .input-group textarea {
-    width: 100%; padding: 10px 15px; border: 1px solid var(--border);
-    border-radius: 8px; outline: none; font-family: inherit; transition: 0.3s;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: 0.3s;
 }
-.input-group input:focus, .input-group select:focus, .input-group textarea:focus { border-color: var(--primary); }
 
-/* Upload Area Styling */
-.hidden-input { display: none; }
-.upload-area {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    border: 2px dashed var(--border); padding: 40px 20px; border-radius: 12px;
-    cursor: pointer; transition: 0.3s; text-align: center; background: #f9fafb;
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
-.upload-area:hover { border-color: var(--primary); background: #eff6ff; }
+
+.form-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* ── Single upload (lama — tetap ada untuk fallback) ──────── */
+.hidden-input { display: none; }
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border);
+    padding: 40px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    background: #f9fafb;
+}
+
+.upload-area:hover {
+    border-color: var(--primary);
+    background: #eff6ff;
+}
+
 .upload-area i { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
 .file-info { font-size: 0.75rem; color: var(--text-light); margin-top: 5px; }
 
 .image-preview { margin-top: 15px; text-align: center; }
-.image-preview img { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px; }
+.image-preview img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
 
-.form-actions { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 15px; }
+/* ── Multi-image Grid ─────────────────────────────────────── */
+.multi-upload-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.multi-upload-hint {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.multi-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Slot — base: gunakan height fixed, bukan aspect-ratio */
+.img-slot {
+    position: relative;
+    height: 110px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+/* Slot terisi */
+.img-slot.filled img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Badge "Utama" di foto pertama */
+.main-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Tombol crop & hapus muncul saat hover */
+.slot-actions {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 3;
+}
+
+.img-slot.filled:hover .slot-actions {
+    opacity: 1;
+}
+
+.slot-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.slot-btn.crop-btn {
+    background: var(--primary);
+    color: #fff;
+}
+
+.slot-btn.crop-btn:hover { background: #4338ca; }
+
+.slot-btn.remove-btn {
+    background: var(--danger);
+    color: #fff;
+}
+
+.slot-btn.remove-btn:hover { background: #dc2626; }
+
+/* Slot tambah */
+.img-slot.add-slot {
+    border: 2px dashed #d1d5db;
+    background: #fafafa;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: grid;
+    place-items: center;
+}
+
+.img-slot.add-slot:hover {
+    border-color: var(--primary);
+    background: #eff6ff;
+}
+
+/* Label — tidak perlu height sendiri, ikut slot */
+.add-slot-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    text-align: center;
+    padding: 8px;
+}
+
+.add-slot-label i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.add-slot-label span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.add-slot-label small {
+    font-size: 0.68rem;
+    color: var(--text-light);
+}
+
+/* ── Crop Modal ───────────────────────────────────────────── */
+.crop-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+.crop-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.crop-modal-box {
+    background: #1f2937;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.crop-modal-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #374151;
+}
+
+.crop-modal-header h4 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Ratio & rotate controls */
+.crop-controls {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #374151;
+    flex-wrap: wrap;
+}
+
+.crop-controls span {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-right: 4px;
+}
+
+.crop-ctrl-btn {
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid #374151;
+    background: #374151;
+    color: #d1d5db;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.crop-ctrl-btn:hover,
+.crop-ctrl-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+/* Canvas area */
+.crop-canvas-area {
+    flex: 1;
+    overflow: hidden;
+    max-height: 380px;
+    background: #111827;
+}
+
+.crop-canvas-area img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Footer */
+.crop-modal-footer {
+    padding: 14px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #374151;
+}
+
+/* Responsive form */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Pindah kolom foto ke atas (order -1) */
+    .form-grid .form-column:last-child {
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    /* Di mobile: 5 slot sejajar horizontal, bisa scroll */
+    .multi-image-grid {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+    }
+
+    .multi-image-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .img-slot {
+        flex-shrink: 0;
+        width: 90px;
+        height: 90px;
+    }
+
+    .add-slot-label {
+        height: 90px;
+    }
+}

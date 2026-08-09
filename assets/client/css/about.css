@@ -1,12 +1,283 @@
-/* about.css */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
-.mission-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
-.mission-vision .card { background: var(--bg-main); padding: 20px; border-radius: 12px; }
-.mission-vision i { font-size: 2rem; color: var(--primary-color); margin-bottom: 15px; }
-.about-image img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-md); }
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
 
-/* contact.css */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 80px; }
-.info-list li { display: flex; gap: 20px; margin-bottom: 30px; }
-.info-list i { font-size: 2rem; color: var(--primary-color); }
-.info-list h4 { margin-bottom: 5px; color: var(--text-main); }
+.about-section {
+    padding: 60px 20px 80px;
+}
+
+/* --- About Hero / Intro Grid --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.about-content h2,
+.about-text h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.about-content p,
+.about-text p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+/* Mission & Vision cards */
+.mission-vision {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.mission-vision .card {
+    background: var(--bg-main);
+    padding: 20px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.mission-vision .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.mission-vision i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.mission-vision h4,
+.mission-vision h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.mission-vision p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* About image */
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
+/* --- Team / Stats Section --- */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.stat-item {
+    background: var(--bg-white);
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-item h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.stat-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .about-image {
+        order: -1; /* Gambar di atas pada tablet */
+    }
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 40px 20px 60px;
+    }
+    .about-grid {
+        margin-bottom: 50px;
+    }
+    .about-content h2 {
+        font-size: 1.6rem;
+    }
+    .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .stat-item {
+        padding: 20px;
+    }
+    .stat-item h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-section {
+        padding: 30px 16px 50px;
+    }
+    .about-content h2 {
+        font-size: 1.4rem;
+    }
+    .mission-vision .card {
+        padding: 16px;
+    }
+    .mission-vision i {
+        font-size: 1.6rem;
+    }
+    .about-image img {
+        border-radius: 14px;
+    }
+}
+
+/* ── Admin Profile Card di About ─────────────────────────── */
+.admin-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: var(--bg-white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    padding: 36px 40px;
+    margin-bottom: 60px;
+}
+
+.admin-avatar-wrap img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e0e7ff;
+    flex-shrink: 0;
+}
+
+.admin-profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-badge {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #4f46e5;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.admin-profile-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.about-bio-text {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.admin-contact-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-link.wa {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.contact-link.wa:hover {
+    background: #059669;
+    color: #fff;
+}
+
+.contact-link.email {
+    background: #e0e7ff;
+    color: #4f46e5;
+}
+
+.contact-link.email:hover {
+    background: #4f46e5;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .admin-profile-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 24px;
+        gap: 20px;
+    }
+    .admin-contact-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-profile-card {
+        padding: 20px 16px;
+    }
+    .admin-avatar-wrap img {
+        width: 90px;
+        height: 90px;
+    }
+    .admin-profile-info h2 {
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,181 @@
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+
+.contact-section {
+    padding: 60px 20px 80px;
+}
+
+/* Two-column grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* --- Kolom Info --- */
+.contact-info h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 14px;
+}
+
+.contact-info > p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+}
+
+/* Daftar item kontak */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.info-list li i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    width: 40px;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.info-list li h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.info-list li p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* --- Kolom Aksi (WA card) --- */
+.contact-action .wa-card {
+    background: var(--bg-white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    padding: 48px 40px;
+    text-align: center;
+    list-style: none;
+}
+
+/* Icon dekoratif — hanya direct child supaya tidak kena icon di button */
+.contact-action .wa-card > i {
+    font-size: 4rem;
+    color: var(--success);
+    display: block;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.contact-action .wa-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.contact-action .wa-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Tombol WA full width */
+.btn-wa-full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    background: var(--success);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-wa-full i {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.btn-wa-full:hover {
+    background: #37b24d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(64, 192, 87, 0.35);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .contact-section {
+        padding: 40px 20px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-action .wa-card {
+        padding: 32px 24px;
+    }
+    .contact-info h2 {
+        font-size: 1.5rem;
+    }
+    .info-list {
+        gap: 20px;
+    }
+    .info-list li {
+        gap: 14px;
+    }
+    .info-list li i {
+        font-size: 1.5rem;
+        width: 32px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding: 30px 16px 50px;
+    }
+    .contact-action .wa-card {
+        padding: 24px 16px;
+    }
+    .contact-action .wa-card > i {
+        font-size: 3rem;
+    }
+    .contact-action .wa-card h3 {
+        font-size: 1.15rem;
+    }
+    .btn-wa-full {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+    .info-list li i {
+        font-size: 1.3rem;
+    }
+}

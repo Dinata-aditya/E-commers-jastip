@@ -1,11 +1,15 @@
-/* --- Site Header & Navbar --- */
+/* ============================================================
+   NAVBAR & BOTTOM NAV
+   ============================================================ */
+
+/* --- Site Header --- */
 .site-header {
     background-color: var(--bg-white);
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow-sm);
-    height: 80px;
+    height: 64px;
     display: flex;
     align-items: center;
 }
@@ -19,23 +23,25 @@
 
 /* Logo */
 .logo {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-main);
     display: flex;
     align-items: center;
     gap: 8px;
 }
+.logo span { color: var(--primary-color); }
+.logo i    { color: var(--primary-color); }
 
-.logo span {
-    color: var(--primary-color);
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(49%) sepia(78%) saturate(800%) hue-rotate(316deg) brightness(103%);
 }
 
-.logo i {
-    color: var(--primary-color);
-}
-
-/* Nav Menu */
+/* Desktop Nav Menu */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -43,7 +49,7 @@
 
 .nav-list {
     display: flex;
-    gap: 10px;
+    gap: 4px;
     list-style: none;
     align-items: center;
 }
@@ -52,7 +58,7 @@
     padding: 8px 14px;
     border-radius: 8px;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--text-main);
     transition: var(--transition);
 }
@@ -63,24 +69,84 @@
     background-color: #fff0f0;
 }
 
-/* Nav Actions (right side) */
+/* Nav Actions */
 .nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* Hamburger Button (hidden on desktop) */
+/* Hamburger — hidden di semua ukuran */
 .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: var(--text-main);
-    transition: var(--transition);
+    display: none !important;
 }
 
-.hamburger:hover {
-    color: var(--primary-color);
+/* ── Bottom Navigation Bar (mobile only) ─────────────────── */
+.bottom-nav {
+    display: none; /* hidden di desktop */
+}
+
+@media (max-width: 768px) {
+
+    /* Header lebih compact */
+    .site-header {
+        height: 56px;
+    }
+
+    /* Sembunyikan nav menu desktop */
+    .nav-menu {
+        display: none;
+    }
+
+    /* Sembunyikan tombol WA di header */
+    .nav-actions .btn-whatsapp {
+        display: none;
+    }
+
+    /* Beri ruang bawah body agar tidak tertutup bottom nav */
+    body {
+        padding-bottom: 64px;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: var(--bg-white);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+        z-index: 1000;
+        align-items: stretch;
+    }
+
+    .bottom-nav a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: var(--text-muted);
+        font-size: 0.62rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s;
+        padding: 6px 4px;
+    }
+
+    .bottom-nav a i {
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    .bottom-nav a.active,
+    .bottom-nav a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Tombol WA di tengah bottom nav — tidak dipakai lagi */
 }

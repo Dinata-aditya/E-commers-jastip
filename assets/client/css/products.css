@@ -1,35 +1,63 @@
+/* ============================================================
+   PRODUCTS PAGE
+   ============================================================ */
+
+/* --- Page Header / Breadcrumb --- */
 .page-header {
     background-color: var(--bg-white);
     padding: 40px 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: 40px;
 }
 
 .page-header h1 {
     font-size: 2.2rem;
+    font-weight: 700;
     color: var(--text-main);
+    margin-bottom: 8px;
 }
 
+.page-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.page-header a {
+    color: var(--primary-color);
+}
+
+/* --- Main Layout: sidebar + content --- */
 .products-main {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 240px 1fr;
     gap: 30px;
-    margin-bottom: 80px;
+    padding: 40px 0 80px;
+    align-items: start;
 }
 
+/* --- Sidebar --- */
 .products-sidebar {
     background: var(--bg-white);
     padding: 24px;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
-    height: fit-content;
     position: sticky;
     top: 100px;
 }
 
+.products-sidebar .filter-group h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}
+
+.filter-list {
+    list-style: none;
+}
+
 .filter-list li {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .filter-list label {
@@ -38,26 +66,225 @@
     align-items: center;
     gap: 10px;
     color: var(--text-muted);
+    font-size: 0.9rem;
     transition: var(--transition);
+    padding: 4px 0;
 }
 
 .filter-list label:hover {
     color: var(--primary-color);
 }
 
+.filter-list input[type="radio"] {
+    accent-color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* --- Products Content Area --- */
+.products-content {
+    min-width: 0; /* Penting: cegah grid item overflow */
+}
+
+/* --- Toolbar: search + sort --- */
 .products-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
-.sort-dropdown select {
-    padding: 10px 15px;
+.products-toolbar .search-form {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-white);
+    padding: 10px 16px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    box-shadow: none;
+}
+
+.products-toolbar .search-form i {
+    color: var(--text-muted);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.products-toolbar .search-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.92rem;
+    font-family: inherit;
+    color: var(--text-main);
+    min-width: 0;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.sort-dropdown select {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     outline: none;
     font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background: var(--bg-white);
+    cursor: pointer;
+}
+
+/* --- Product Grid di dalam content area --- */
+/* .product-grid global sudah didefinisikan di style.css
+   Override hanya untuk konteks halaman products */
+#all-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .products-main {
+        grid-template-columns: 1fr;
+        padding: 20px 0 60px;
+    }
+
+    .products-sidebar {
+        display: none;
+        position: static;
+    }
+
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-list li {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #all-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .products-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    /* Search form mobile — full width, rapi */
+    .products-toolbar .search-form {
+        min-width: unset;
+        width: 100%;
+        padding: 11px 14px;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .products-toolbar .search-form i {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        flex-shrink: 0;
+        line-height: 1;
+    }
+
+    .products-toolbar .search-form input {
+        font-size: 0.9rem;
+        width: 100%;
+        line-height: 1.4;
+    }
+
+    /* Sort dropdown mobile — full width */
+    .sort-dropdown {
+        width: 100%;
+    }
+    .sort-dropdown select {
+        width: 100%;
+        padding: 11px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ── Category Chips (mobile horizontal scroll) ─────────────── */
+.category-chips-wrapper {
+    display: none; /* hidden di desktop */
+}
+
+@media (max-width: 900px) {
+    /* Sembunyikan sidebar di mobile */
+    .products-sidebar {
+        display: none;
+    }
+
+    /* Tampilkan chips wrapper */
+    .category-chips-wrapper {
+        display: block;
+        margin-bottom: 16px;
+        /* Fade di kanan sebagai hint scroll */
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    }
+
+    .category-chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        /* Sembunyikan scrollbar tapi tetap bisa scroll */
+        scrollbar-width: none;
+    }
+    .category-chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Setiap chip */
+    .category-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        padding: 7px 16px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border-color);
+        background: var(--bg-white);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        user-select: none;
+    }
+
+    .category-chip:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    .category-chip.active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+    }
 }
