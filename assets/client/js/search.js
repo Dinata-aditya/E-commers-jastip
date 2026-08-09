@@ -1,22 +1,37 @@
-/* search.js */
-export const initSearch = (callback) => {
-    const searchForm = document.getElementById('product-search-form');
-    const searchInput = document.getElementById('product-search-input');
+/* search.js — Search & Category Filter dengan debounce */
 
-    if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            callback(searchInput.value);
-        });
-    }
+// Debounce helper
+const debounce = (fn, delay = 350) => {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+    };
 };
 
-/* filter.js */
-export const initCategoryFilter = (callback) => {
-    const filterInputs = document.querySelectorAll('input[name="category"]');
-    filterInputs.forEach(input => {
-        input.addEventListener('change', (e) => {
-            callback(e.target.value);
-        });
+export const initSearch = (callback) => {
+    const searchForm  = document.getElementById('product-search-form');
+    const searchInput = document.getElementById('product-search-input');
+    if (!searchForm || !searchInput) return;
+
+    // Submit langsung
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        callback(searchInput.value.trim());
     });
+
+    // Debounce saat mengetik
+    searchInput.addEventListener('input', debounce(() => {
+        callback(searchInput.value.trim());
+    }, 350));
+};
+
+export const initCategoryFilter = (callback) => {
+    // Bind ke existing radio inputs
+    const bindRadios = () => {
+        document.querySelectorAll('input[name="category"]').forEach(input => {
+            input.addEventListener('change', (e) => callback(e.target.value));
+        });
+    };
+    bindRadios();
 };
