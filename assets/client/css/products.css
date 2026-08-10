@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    PRODUCTS PAGE
    ============================================================ */
 
@@ -237,6 +237,7 @@
     /* Tampilkan chips wrapper */
     .category-chips-wrapper {
         display: block;
+        margin-top: 20px;
         margin-bottom: 16px;
         /* Fade di kanan sebagai hint scroll */
         -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);

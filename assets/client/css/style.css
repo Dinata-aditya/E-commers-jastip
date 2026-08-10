@@ -1,4 +1,4 @@
-/* --- CSS Variables --- */
+﻿/* --- CSS Variables --- */
 :root {
     --primary-color: #ff6b6b;
     --primary-hover: #fa5252;
@@ -340,4 +340,70 @@ ul {
     border-color: #fca5a5 !important;
     cursor: default;
     pointer-events: none;
+}
+
+/* ============================================================
+   SKELETON SCREEN — Loading placeholder untuk product cards
+   ============================================================ */
+
+@keyframes skeleton-shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 800px 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    border-radius: 6px;
+}
+
+/* Card skeleton wrapper */
+.product-card-skeleton {
+    background: var(--bg-white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Gambar placeholder */
+.skeleton-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+/* Body placeholder */
+.skeleton-body {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skeleton-title {
+    height: 14px;
+    width: 80%;
+}
+
+.skeleton-title-short {
+    height: 14px;
+    width: 50%;
+}
+
+.skeleton-price {
+    height: 16px;
+    width: 55%;
+    margin-top: 4px;
+}
+
+.skeleton-btn {
+    height: 36px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
 }

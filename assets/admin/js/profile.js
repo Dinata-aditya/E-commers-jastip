@@ -1,4 +1,4 @@
-/**
+﻿/**
  * profile.js
  * - Load profil dari store_profile table + user_metadata
  * - Simpan nama, bio, avatar ke store_profile table
@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const storedName      = profile?.name      || user.user_metadata?.full_name || email.split('@')[0];
     const storedBio       = profile?.bio        || '';
     const storedAvatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(storedName.slice(0,2).toUpperCase())}&background=4F46E5&color=fff&size=128`;
-    const storedWa        = profile?.whatsapp   || '6283164959116';
 
     /* 3. Isi UI */
     const set     = (id, val) => { const el = document.getElementById(id); if (el) el.value = val ?? ''; };
@@ -88,7 +87,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const newBio  = document.getElementById('bio').value.trim();
             let   newAvatarUrl = storedAvatarUrl;
 
-            /* Upload foto baru jika ada */
             const file = avatarInput?.files[0];
             if (file) {
                 const uploaded = await uploadProductImage(file);
@@ -102,7 +100,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
 
-            /* Simpan ke store_profile */
             await updateStoreProfile({
                 name:       newName,
                 bio:        newBio,
@@ -110,12 +107,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 email:      email,
             });
 
-            /* Update user_metadata juga agar topbar ikut update */
             await supabase.auth.updateUser({
                 data: { full_name: newName, name: newName, avatar_url: newAvatarUrl }
             });
 
-            /* Update UI */
             setText('card-display-name', newName);
             setAvatar(newAvatarUrl);
             showToast('Profil berhasil disimpan!');
@@ -132,11 +127,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('form-password')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn         = document.getElementById('btn-save-password');
+        const currentPass = document.getElementById('current-password').value.trim();
         const newPass     = document.getElementById('new-password').value;
         const confirmPass = document.getElementById('confirm-password').value;
 
+        // Validasi input
+        if (!currentPass) {
+            showToast('Masukkan password lama terlebih dahulu.', 'warning');
+            return;
+        }
         if (newPass.length < 8) {
-            showToast('Password minimal 8 karakter.', 'warning');
+            showToast('Password baru minimal 8 karakter.', 'warning');
             return;
         }
         if (newPass !== confirmPass) {
@@ -147,17 +148,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
 
-        const { error } = await supabase.auth.updateUser({ password: newPass });
+        try {
+            // Step 1: Verifikasi password lama dengan sign in
+            const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
+                email,
+                password: currentPass,
+            });
 
-        if (error) {
-            showToast(error.message || 'Gagal update password.', 'danger');
-        } else {
-            showToast('Password berhasil diperbarui!');
-            document.getElementById('form-password').reset();
+            if (signInError) {
+                showToast('Password lama tidak benar.', 'danger');
+                return;
+            }
+
+            // Step 2: Set session baru dari hasil sign in
+            await supabase.auth.setSession({
+                access_token:  authData.session.access_token,
+                refresh_token: authData.session.refresh_token,
+            });
+
+            // Step 3: Update password dengan session yang sudah di-refresh
+            const { error } = await supabase.auth.updateUser({ password: newPass });
+            const { error } = await supabase.auth.updateUser({ password: newPass });
+            if (error) {
+                showToast(error.message || 'Gagal update password.', 'danger');
+            } else {
+                showToast('Password berhasil diperbarui!');
+                document.getElementById('form-password').reset();
+            }
+        } catch (err) {
+            showToast(err.message || 'Terjadi kesalahan.', 'danger');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-key"></i> Update Password';
         }
-
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-key"></i> Update Password';
     });
 
     /* 7. Toggle show/hide password */
@@ -171,6 +194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (icon) icon.className = isHidden ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
         });
     };
+    togglePass('toggle-current-pass', 'current-password', 'icon-current-pass');
     togglePass('toggle-new-pass',     'new-password',     'icon-new-pass');
     togglePass('toggle-confirm-pass', 'confirm-password', 'icon-confirm-pass');
 

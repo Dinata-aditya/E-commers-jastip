@@ -4,7 +4,7 @@
  */
 import { initNavbar }          from './navbar.js';
 import { getProducts, getProductById, getCategories, getStoreProfile } from './api.js';
-import { renderProductGrid }   from './product.js';
+import { renderProductGrid, renderSkeletonGrid } from './product.js';
 import { setupWhatsAppButton } from './whatsapp.js';
 import { initSearch, initCategoryFilter } from './search.js';
 
@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
+        renderSkeletonGrid('product-grid', 8);
         await renderHomeGrid();
     }
 
@@ -192,6 +193,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             renderProductGrid(products, 'all-products-grid');
         };
 
+        renderSkeletonGrid('all-products-grid', 8);
         await refreshGrid();
 
         // Search

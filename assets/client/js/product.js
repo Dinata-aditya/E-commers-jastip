@@ -1,4 +1,4 @@
-export const renderProductGrid = (products, containerId) => {
+﻿export const renderProductGrid = (products, containerId) => {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -57,4 +57,26 @@ const escapeHtml = (str) => {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
+};
+
+/**
+ * Render skeleton loading cards sebelum data produk datang.
+ * @param {string} containerId - ID container grid
+ * @param {number} count - Jumlah skeleton card (default 8)
+ */
+export const renderSkeletonGrid = (containerId, count = 8) => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = Array.from({ length: count }, () => `
+        <div class="product-card-skeleton">
+            <div class="skeleton skeleton-img"></div>
+            <div class="skeleton-body">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-title-short"></div>
+                <div class="skeleton skeleton-price"></div>
+                <div class="skeleton skeleton-btn"></div>
+            </div>
+        </div>
+    `).join('');
 };
