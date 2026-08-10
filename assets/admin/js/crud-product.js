@@ -371,7 +371,10 @@ const initEditProduct = async () => {
 /* ── Router ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', async () => {
     const path = window.location.pathname;
-    if (path.includes('products.html'))    await initProductList();
-    if (path.includes('add-product.html')) await initAddProduct();
-    if (path.includes('edit-product.html'))await initEditProduct();
+    const isProducts    = path.includes('products.html') || (path.includes('products') && !path.includes('add') && !path.includes('edit'));
+    const isAddProduct  = path.includes('add-product.html') || path.includes('add-product');
+    const isEditProduct = path.includes('edit-product.html') || path.includes('edit-product');
+    if (isProducts)    await initProductList();
+    if (isAddProduct)  await initAddProduct();
+    if (isEditProduct) await initEditProduct();
 });
